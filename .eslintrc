@@ -1,0 +1,9 @@
+---
+env:
+  es6: true
+  node: true
+extends: airbnb
+rules:
+  comma-dangle: 0
+  max-len: 0
+  arrow-parens: 0
