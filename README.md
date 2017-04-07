@@ -195,6 +195,29 @@ Page {
 
 `title` and `text` are exemplary custom properties taken from the content file.
 
+## Helpers
+
+### `basepath(url)`
+
+Callback function which prepends the `base` option (see below) to the specified `url`. This may be useful if you’re planning to run your static site within a sub directory.
+
+Example:
+
+```
+<link href="<%= basepath('/css/style.css') %>" rel="stylesheet">
+```
+
+### `findPageByUrl(url, context)`
+
+Searches the page tree (starting at `context`, which equals the `genesis` page by default) recursively for the the page that has the URL `url`. This may be useful if you need to use properties of other pages located somewhere else in the page tree.
+
+Example:
+
+```
+<% const contactPage = findPageByUrl('/contact') %>
+<a href="<%= contactPage.url %>"><%= contactPage.title %></a>
+```
+
 ## Shortcodes
 
 Shortcodes let you do nifty things with very little effort by allowing you to create macros to be used in your page contents. A trivial shortcode example may look like this.
@@ -425,6 +448,8 @@ Example:
 
 ## Changelog
 
+* 1.2.0
+  * Implement new helper methods `basepath` and `findPageByUrl`
 * 1.1.0
   * In case a page is the first level page itself, `genesis` is now a reference to `this` (= the page instance itself) instead of `undefined`
 * 1.0.0
