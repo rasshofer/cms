@@ -136,7 +136,7 @@ The following object dump represents the properties that are passed into the tem
 Page {
   file: '/Users/johndoe/Repositories/my-fancy-website/content/home.md',
   parent: undefined,
-  genesis: undefined,
+  genesis: Page,
   index: 0,
   visible: false,
   invisible: true,
@@ -144,18 +144,42 @@ Page {
   url: '/',
   output: '/Users/johndoe/Repositories/my-fancy-website/build/index.html',
   template: 'home',
-  children: [],
+  children: [
+    Page,
+    Page,
+    …
+  ],
   hasChildren: true,
-  files: [],
-  hasFiles: false,
-  images: [],
-  hasImages: false,
-  videos: [],
-  hasVideos: false,
-  sounds: [],
-  hasSounds: false,
-  documents: [],
-  hasDocuments: false,
+  files: [
+    File,
+    File,
+    …
+  ],
+  hasFiles: true,
+  images: [
+    Image,
+    Image,
+    …
+  ],
+  hasImages: true,
+  videos: [
+    File,
+    File,
+    …
+  ],
+  hasVideos: true,
+  sounds: [
+    File,
+    File,
+    …
+  ],
+  hasSounds: true,
+  documents: [
+    File,
+    File,
+    …
+  ],
+  hasDocuments: true,
   title: 'Lorem ipsum dolor sit amet',
   text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
 }
@@ -163,7 +187,7 @@ Page {
 
 `parent` may include a reference to the current page’s parent page. This may be useful for stuff like breadcrumb navigations. In case the page is a first level page, `parent` is simply `undefined`.
 
-`genesis` may include a reference to the root page. This may be useful for stuff like navigations (i.e. show all first level pages). In case the page is the first level page itself, `genesis` is simply `undefined`.
+`genesis` may include a reference to the root page. This may be useful for stuff like navigations (i.e. show all first level pages). In case the page is the first level page itself, `genesis` is simply a reference to `this` (= the page instance itself).
 
 `children` may contain any direct child pages of the current page. This may be useful for stuff like navigations. In case the page has no children, `children` will be an empty array.
 
@@ -401,6 +425,8 @@ Example:
 
 ## Changelog
 
+* 1.1.0
+  * In case a page is the first level page itself, `genesis` is now a reference to `this` (= the page instance itself) instead of `undefined`
 * 1.0.0
   * Initial version
 
