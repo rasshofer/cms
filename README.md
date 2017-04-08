@@ -448,6 +448,9 @@ Example:
 
 ## Changelog
 
+* 1.2.1
+  * Adjust `basepath` to only prepend the base path to an URL in case it isn’t there yet
+  * Fix typos in documentation
 * 1.2.0
   * Implement new helper methods `basepath` and `findPageByUrl`
 * 1.1.0
