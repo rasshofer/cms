@@ -79,7 +79,7 @@ const copyPageResources = (page) => new Promise((resolve) => {
 
 const renderPage = (page, options) => {
   if (!page) {
-    return Promise.reject();
+    return Promise.reject('Missing page.');
   }
 
   return createPageDirectory(page)
@@ -100,6 +100,10 @@ module.exports = (custom) => {
   rimraf.sync(config.paths.output);
 
   const page = Page.generatePageFromDirectory(config.paths.content, config);
+
+  if (page === false) {
+    return Promise.reject('Missing genesis page.');
+  }
 
   return renderPage(page, config);
 };
