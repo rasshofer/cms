@@ -448,6 +448,9 @@ Example:
 
 ## Changelog
 
+* 1.2.3
+  * Implement proper natural sorting of pages
+  * Implement more specific rejections in case a page is invalid (e.g. missing genesis page)
 * 1.2.2
   * Apply `base` prefix and `permalink` callback to `findPageByUrl` helper queries automatically
 * 1.2.1
