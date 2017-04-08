@@ -5,6 +5,7 @@ const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
 const ShortcodeParser = require('meta-shortcodes');
+const naturalSort = require('javascript-natural-sort');
 const Page = require('./lib/page');
 const defaults = require('./lib/defaults');
 
@@ -22,7 +23,7 @@ const findMatchingTemplate = (page, options) => new Promise((resolve, reject) =>
   const templates = glob.sync(`${page.template}.+(${options.extensions.templates.join('|')})`, {
     cwd: options.paths.templates,
     absolute: true
-  });
+  }).sort(naturalSort);
 
   if (!templates.length) {
     reject(`Missing template: ${page.template}`);
