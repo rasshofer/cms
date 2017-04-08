@@ -231,7 +231,7 @@ The example above shows a basic shortcode to embed a YouTube video. The actual e
 ```js
 {
   youtube: (attrs, content) => {
-    return `<iframe href="https://www.youtube.com/embed/${attrs.id}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
+    return `<iframe src="https://www.youtube.com/embed/${attrs.id}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
   }
 }
 ```
@@ -437,7 +437,7 @@ Example:
 ```js
 {
   youtube: (attrs, content) => {
-    return `<iframe href="https://www.youtube.com/embed/${attrs.id}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
+    return `<iframe src="https://www.youtube.com/embed/${attrs.id}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
   }
 }
 ```
