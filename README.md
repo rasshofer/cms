@@ -448,6 +448,8 @@ Example:
 
 ## Changelog
 
+* 1.2.2
+  * Apply `base` prefix and `permalink` callback to `findPageByUrl` helper queries automatically
 * 1.2.1
   * Adjust `basepath` to only prepend the base path to an URL in case it isn’t there yet
   * Fix typos in documentation
