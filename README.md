@@ -448,6 +448,8 @@ Example:
 
 ## Changelog
 
+* 1.2.4
+  * Fix parsing of index prefixes to prevent inaccurate digit replacements within URLs
 * 1.2.3
   * Implement proper natural sorting of pages
   * Implement more specific rejections in case a page is invalid (e.g. missing genesis page)
