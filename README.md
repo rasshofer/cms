@@ -448,6 +448,8 @@ Example:
 
 ## Changelog
 
+* 1.2.5
+  * Fix parsing of index prefixes to prevent misplaced digits within URLs
 * 1.2.4
   * Fix parsing of index prefixes to prevent inaccurate digit replacements within URLs
 * 1.2.3
