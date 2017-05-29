@@ -223,15 +223,15 @@ Example:
 Shortcodes let you do nifty things with very little effort by allowing you to create macros to be used in your page contents. A trivial shortcode example may look like this.
 
 ```
-[youtube id=jNQXAC9IVRw width=480 height=360 /]
+(youtube: jNQXAC9IVRw width: 480 height: 360)
 ```
 
 The example above shows a basic shortcode to embed a YouTube video. The actual embedment is done by an appropiate handler, called everytime the shortcode is used.
 
 ```js
 {
-  youtube: (attrs, content) => {
-    return `<iframe src="https://www.youtube.com/embed/${attrs.id}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
+  youtube: (attrs) => {
+    return `<iframe src="https://www.youtube.com/embed/${attrs.youtube}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
   }
 }
 ```
@@ -437,7 +437,7 @@ Example:
 ```js
 {
   youtube: (attrs, content) => {
-    return `<iframe src="https://www.youtube.com/embed/${attrs.id}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
+    return `<iframe src="https://www.youtube.com/embed/${attrs.youtube}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
   }
 }
 ```
@@ -448,6 +448,8 @@ Example:
 
 ## Changelog
 
+* 1.3.1
+  * Fix shortcode examples
 * 1.3.0
   * Migrate to [shortcodes](https://www.npmjs.com/package/shortcodes) for shortcode parsing
   * Update dependencies
