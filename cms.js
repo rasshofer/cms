@@ -4,7 +4,7 @@ const deepmerge = require('deepmerge');
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
-const ShortcodeParser = require('meta-shortcodes');
+const shortcodes = require('shortcodes');
 const naturalSort = require('javascript-natural-sort');
 const Page = require('./lib/page');
 const defaults = require('./lib/defaults');
@@ -40,13 +40,10 @@ const compileTemplate = (template, page, options) => {
     options.addons,
     {
       shortcodes(input) {
-        const parser = ShortcodeParser();
-
         Object.keys(options.shortcodes).forEach((key) => {
-          parser.add(key, options.shortcodes[key]);
+          shortcodes.add(key, options.shortcodes[key]);
         });
-
-        return parser.parse(input);
+        return shortcodes.parse(input);
       }
     }
   ]);

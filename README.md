@@ -448,6 +448,9 @@ Example:
 
 ## Changelog
 
+* 1.3.0
+  * Migrate to [shortcodes](https://www.npmjs.com/package/shortcodes) for shortcode parsing
+  * Update dependencies
 * 1.2.5
   * Fix parsing of index prefixes to prevent misplaced digits within URLs
 * 1.2.4
