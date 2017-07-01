@@ -33,15 +33,20 @@ const findMatchingTemplate = (page, options) => new Promise((resolve, reject) =>
 });
 
 const compileTemplate = (template, page, options) => {
-  const locals = deepmerge.all([
+  const merged = deepmerge.all([
     {},
     page,
     options.globals,
-    options.addons,
+    options.addons
+  ]);
+
+  const locals = deepmerge.all([
+    {},
+    merged,
     {
       shortcodes(input) {
         Object.keys(options.shortcodes).forEach((key) => {
-          shortcodes.add(key, options.shortcodes[key]);
+          shortcodes.add(key, (attrs) => options.shortcodes[key](attrs, merged));
         });
         return shortcodes.parse(input);
       }

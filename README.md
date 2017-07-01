@@ -236,6 +236,27 @@ The example above shows a basic shortcode to embed a YouTube video. The actual e
 }
 ```
 
+In addition, the page object of the current page (which includes/invokes the shortcode) gets passed into the shortcode handler function as its (optional) second parameter. This allows shortcodes to interact with the page context.
+
+```js
+{
+  photo: (attrs, page) => {
+    const photo = page.images.find((item) => item.identifier === attrs.photo);
+
+    if (photo) {
+      return `
+        <figure>
+          <img src="${photo.url}" alt="${photo.title}">
+          ${photo.caption ? `<figcaption>${photo.caption}</figcaption>` : ''}
+        </figure>
+      `;  
+    }
+
+    return '';
+  }
+}
+```
+
 ## Configuration
 
 CMS uses a [sane configuration by default](https://github.com/rasshofer/cms/blob/master/lib/defaults.js) that should cover most use cases. However, if you would like to adjust/extend the configuration, you can either create a file called `cms.js` within the root directory (where you’re running `cms` in) which exports the configuration object or pass the configuration object into your `cms` function call. In both cases, `cms` expects to receive a proper JavaScript object containing some of the following properties.
@@ -436,7 +457,7 @@ Example:
 
 ```js
 {
-  youtube: (attrs, content) => {
+  youtube: (attrs) => {
     return `<iframe src="https://www.youtube.com/embed/${attrs.youtube}"${attrs.width ? ` width="${attrs.width}"`: ''}${attrs.height ? ` height="${attrs.height}"`: ''}></iframe>`;
   }
 }
@@ -448,6 +469,9 @@ Example:
 
 ## Changelog
 
+* 1.4.0
+  * Hand over pages into shortcode handlers
+  * Update dependencies
 * 1.3.1
   * Fix shortcode examples
 * 1.3.0
