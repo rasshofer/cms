@@ -44,9 +44,9 @@ const compileTemplate = (template, page, options) => {
     {},
     merged,
     {
-      shortcodes(input) {
+      shortcodes(input, context = merged) {
         Object.keys(options.shortcodes).forEach((key) => {
-          shortcodes.add(key, (attrs) => options.shortcodes[key](attrs, merged));
+          shortcodes.add(key, (attrs) => options.shortcodes[key](attrs, context));
         });
         return shortcodes.parse(input);
       }
