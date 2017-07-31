@@ -469,6 +469,9 @@ Example:
 
 ## Changelog
 
+* 1.5.0
+  * Implement optional `context` parameter for shortcode helper
+  * Update dependencies
 * 1.4.0
   * Hand over pages into shortcode handlers
   * Update dependencies
