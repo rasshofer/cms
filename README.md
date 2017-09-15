@@ -489,6 +489,10 @@ Example:
 
 ## Changelog
 
+* 1.6.0
+  * Move programmatic rendering to `render` method and add `get`/`config` methods to allow headless use
+  * Enforce proper errors for promise rejections
+  * Update dependencies
 * 1.5.0
   * Implement optional `context` parameter for shortcode helper
   * Update dependencies
