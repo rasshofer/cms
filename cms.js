@@ -26,7 +26,7 @@ const findMatchingTemplate = (page, options) => new Promise((resolve, reject) =>
   }).sort(naturalSort);
 
   if (!templates.length) {
-    reject(`Missing template: ${page.template}`);
+    reject(new Error(`Missing template: ${page.template}`));
   } else {
     resolve(templates[0]);
   }
@@ -82,7 +82,7 @@ const copyPageResources = (page) => new Promise((resolve) => {
 
 const renderPage = (page, options) => {
   if (!page) {
-    return Promise.reject('Missing page.');
+    return Promise.reject(new Error('Missing page.'));
   }
 
   return createPageDirectory(page)
@@ -107,7 +107,7 @@ module.exports = (custom) => {
     config: () => config,
     render: () => {
       if (page === false) {
-        return Promise.reject('Missing genesis page.');
+        return Promise.reject(new Error('Missing genesis page.'));
       }
 
       rimraf.sync(config.paths.output);
