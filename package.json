@@ -20,8 +20,8 @@
     "cms"
   ],
   "dependencies": {
-    "deepmerge": "^1.5.0",
-    "fs-extra": "^4.0.1",
+    "deepmerge": "^1.5.1",
+    "fs-extra": "^4.0.2",
     "glob": "^7.1.2",
     "image-size": "^0.6.1",
     "javascript-natural-sort": "^0.7.1",
@@ -29,15 +29,13 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.2",
     "shortcodes": "0.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-jsx-a11y": "^5.1.0",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint": "^4.7.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
   },
   "scripts": {
     "test": "eslint cms.js cli.js lib/*.js"

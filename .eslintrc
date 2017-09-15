@@ -2,7 +2,7 @@
 env:
   es6: true
   node: true
-extends: airbnb
+extends: airbnb-base
 rules:
   comma-dangle: 0
   max-len: 0
