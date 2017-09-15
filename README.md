@@ -22,12 +22,32 @@ cms({
   paths: {
     output: path.resolve(__dirname, 'build')
   }
-}).then(() => {
+}).render().then(() => {
   console.log('Done.');
 }).catch((error) => {
   console.error(error);
 });
 ```
+
+## Programmatic API
+
+### `cms(…).render()`
+
+> Renders the page(s) based on your configuration
+
+Returns: `Promise`
+
+### `cms(…).get()`
+
+> Returns the genesis page based on your configuration for further processing (e.g. headless use)
+
+Returns: `Page`
+
+### `cms(…).config()`
+
+> Returns the merged configuration (= defaults + your custom configuration)
+
+Returns: `Object`
 
 ## CLI
 

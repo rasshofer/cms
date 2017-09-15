@@ -19,7 +19,7 @@ const readCustomConfig = () => {
   });
 };
 
-readCustomConfig().then(cms).then(() => {
+readCustomConfig().then(cms.render()).then(() => {
   leprechaun.success('Done.');
 }).catch((error) => {
   leprechaun.error('Error.');

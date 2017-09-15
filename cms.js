@@ -100,13 +100,19 @@ module.exports = (custom) => {
     custom
   ]);
 
-  rimraf.sync(config.paths.output);
-
   const page = Page.generatePageFromDirectory(config.paths.content, config);
 
-  if (page === false) {
-    return Promise.reject('Missing genesis page.');
-  }
+  return {
+    get: () => page,
+    config: () => config,
+    render: () => {
+      if (page === false) {
+        return Promise.reject('Missing genesis page.');
+      }
 
-  return renderPage(page, config);
+      rimraf.sync(config.paths.output);
+
+      return renderPage(page, config);
+    }
+  };
 };
