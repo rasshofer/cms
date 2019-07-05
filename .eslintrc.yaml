@@ -4,6 +4,4 @@ env:
   node: true
 extends: airbnb-base
 rules:
-  comma-dangle: 0
   max-len: 0
-  arrow-parens: 0

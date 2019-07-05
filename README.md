@@ -56,7 +56,7 @@ npm install -g cms
 ```
 
 ```shell
-$ cms
+cms
 ```
 
 ## Content and structure
@@ -92,7 +92,7 @@ In addition, those numbers in front of visible pages are used by `cms` to sort p
 
 Each folder inside the content folder has a text file in it, which holds all the content for that page. This file may be called `page.md` (or `post.txt` or …). Those text files are very easy to read/edit and still offer amazing possibilities to add content. Have a look at the following example (i.e. an example for a blog post).
 
-```
+```md
 Title: Hello world
 -----
 Text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -106,7 +106,7 @@ As you can see, each field has a name (which needs to consist of characters from
 
 To structure things a bit more clear, you may want to use additional line breaks (any line breaks at the start and/or end will be trimmed automatically anyways).
 
-```
+```md
 Title: Hello world
 
 ----
@@ -140,7 +140,7 @@ To cut a long story short: You should always make sure to enter your text as UTF
 
 Just like page content files, you may also create file content files, containing stuff like titles or captions. Simply add a text file for each file matching the full name of the file, followed by your content file extension (i.e. `test.jpg.md` for the file `test.jpg`). Inside those text files you can define your own fields and content, just like regular content files.
 
-```
+```md
 Title: Very nice image
 ----
 Caption: This is a very nice image with loads of colors and stuff.
@@ -223,7 +223,7 @@ Callback function which prepends the `base` option (see below) to the specified 
 
 Example:
 
-```
+```html
 <link href="<%= basepath('/css/style.css') %>" rel="stylesheet">
 ```
 
@@ -233,7 +233,7 @@ Returns a boolean indicating whether the current page has the specified property
 
 Example:
 
-```
+```ejs
 <% if (has('description')) { %>
 <p><%= description %></p>
 <% } %>
@@ -245,7 +245,7 @@ Returns the specified property (or the specified default value if it does not ex
 
 Example:
 
-```
+```ejs
 <% ['title', 'description'].forEach((prop) => { %>
 <p><%= get(prop, 'Something') %></p>
 <% }) %>
@@ -257,7 +257,7 @@ Searches the page tree (starting at `context`, which equals the `genesis` page b
 
 Example:
 
-```
+```ejs
 <% const contactPage = findPageByUrl('/contact') %>
 <a href="<%= contactPage.url %>"><%= contactPage.title %></a>
 ```
@@ -266,7 +266,7 @@ Example:
 
 Shortcodes let you do nifty things with very little effort by allowing you to create macros to be used in your page contents. A trivial shortcode example may look like this.
 
-```
+```plain
 (youtube: jNQXAC9IVRw width: 480 height: 360)
 ```
 
@@ -513,39 +513,39 @@ Example:
 
 ## Changelog
 
-* 1.6.0
-  * Move programmatic rendering to `render` method and add `get`/`config` methods to allow headless use
-  * Enforce proper errors for promise rejections
-  * Update dependencies
-* 1.5.0
-  * Implement optional `context` parameter for shortcode helper
-  * Update dependencies
-* 1.4.0
-  * Hand over pages into shortcode handlers
-  * Update dependencies
-* 1.3.1
-  * Fix shortcode examples
-* 1.3.0
-  * Migrate to [shortcodes](https://www.npmjs.com/package/shortcodes) for shortcode parsing
-  * Update dependencies
-* 1.2.5
-  * Fix parsing of index prefixes to prevent misplaced digits within URLs
-* 1.2.4
-  * Fix parsing of index prefixes to prevent inaccurate digit replacements within URLs
-* 1.2.3
-  * Implement proper natural sorting of pages
-  * Implement more specific rejections in case a page is invalid (e.g. missing genesis page)
-* 1.2.2
-  * Apply `base` prefix and `permalink` callback to `findPageByUrl` helper queries automatically
-* 1.2.1
-  * Adjust `basepath` to only prepend the base path to an URL in case it isn’t there yet
-  * Fix typos in documentation
-* 1.2.0
-  * Implement new helper methods `basepath` and `findPageByUrl`
-* 1.1.0
-  * In case a page is the first level page itself, `genesis` is now a reference to `this` (= the page instance itself) instead of `undefined`
-* 1.0.0
-  * Initial version
+- 1.6.0
+  - Move programmatic rendering to `render` method and add `get`/`config` methods to allow headless use
+  - Enforce proper errors for promise rejections
+  - Update dependencies
+- 1.5.0
+  - Implement optional `context` parameter for shortcode helper
+  - Update dependencies
+- 1.4.0
+  - Hand over pages into shortcode handlers
+  - Update dependencies
+- 1.3.1
+  - Fix shortcode examples
+- 1.3.0
+  - Migrate to [shortcodes](https://www.npmjs.com/package/shortcodes) for shortcode parsing
+  - Update dependencies
+- 1.2.5
+  - Fix parsing of index prefixes to prevent misplaced digits within URLs
+- 1.2.4
+  - Fix parsing of index prefixes to prevent inaccurate digit replacements within URLs
+- 1.2.3
+  - Implement proper natural sorting of pages
+  - Implement more specific rejections in case a page is invalid (e.g. missing genesis page)
+- 1.2.2
+  - Apply `base` prefix and `permalink` callback to `findPageByUrl` helper queries automatically
+- 1.2.1
+  - Adjust `basepath` to only prepend the base path to an URL in case it isn’t there yet
+  - Fix typos in documentation
+- 1.2.0
+  - Implement new helper methods `basepath` and `findPageByUrl`
+- 1.1.0
+  - In case a page is the first level page itself, `genesis` is now a reference to `this` (= the page instance itself) instead of `undefined`
+- 1.0.0
+  - Initial version
 
 ## Thanks
 
