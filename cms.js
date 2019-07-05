@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const deepmerge = require('deepmerge');
+const merge = require('lodash.merge');
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 const glob = require('glob');
@@ -33,25 +33,15 @@ const findMatchingTemplate = (page, options) => new Promise((resolve, reject) =>
 });
 
 const compileTemplate = (template, page, options) => {
-  const merged = deepmerge.all([
-    {},
-    page,
-    options.globals,
-    options.addons,
-  ]);
-
-  const locals = deepmerge.all([
-    {},
-    merged,
-    {
-      shortcodes(input, context = merged) {
-        Object.keys(options.shortcodes).forEach((key) => {
-          shortcodes.add(key, attrs => options.shortcodes[key](attrs, context));
-        });
-        return shortcodes.parse(input);
-      },
+  const merged = merge({}, page, options.globals, options.addons);
+  const locals = merge({}, merged, {
+    shortcodes(input, context = merged) {
+      Object.keys(options.shortcodes).forEach((key) => {
+        shortcodes.add(key, attrs => options.shortcodes[key](attrs, context));
+      });
+      return shortcodes.parse(input);
     },
-  ]);
+  });
 
   return options.template(template, locals);
 };
@@ -94,11 +84,7 @@ const renderPage = (page, options) => {
 };
 
 module.exports = (custom) => {
-  const config = deepmerge.all([
-    {},
-    defaults,
-    custom,
-  ]);
+  const config = merge({}, defaults, custom);
 
   const page = Page.generatePageFromDirectory(config.paths.content, config);
 

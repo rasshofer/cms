@@ -20,13 +20,13 @@
     "cms"
   ],
   "dependencies": {
-    "deepmerge": "^3.3.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "image-size": "^0.7.4",
     "javascript-natural-sort": "^0.7.1",
     "leprechaun": "0.0.2",
     "lodash.camelcase": "^4.3.0",
+    "lodash.merge": "^4.6.1",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.3",
