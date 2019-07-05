@@ -1,4 +1,6 @@
 docs
+tests
+coverage
 .editorconfig
 .eslintrc
 .gitignore

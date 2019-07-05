@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Config provides proper default values 1`] = `
+Object {
+  "line": "-----",
+  "values": ":",
+}
+`;
+
+exports[`Config provides proper default values 2`] = `
+Object {
+  "content": Array [
+    "md",
+  ],
+  "documents": Array [
+    "pdf",
+    "doc",
+    "xls",
+    "ppt",
+    "docx",
+    "xlsx",
+    "pptx",
+  ],
+  "images": Array [
+    "jpg",
+    "jpeg",
+    "gif",
+    "png",
+    "webp",
+  ],
+  "output": "html",
+  "sounds": Array [
+    "mp3",
+    "wav",
+    "m4a",
+    "ogg",
+    "oga",
+  ],
+  "templates": Array [
+    "ejs",
+  ],
+  "videos": Array [
+    "mpg",
+    "mpeg",
+    "mp4",
+    "mov",
+    "avi",
+    "flv",
+    "ogv",
+    "webm",
+  ],
+}
+`;
+
+exports[`Config provides proper default values 3`] = `
+"<h1>Title</h1>
+<p>Text</p>
+"
+`;
+
+exports[`Render renders pages properly 1`] = `
+"<h1>Home</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+"
+`;
