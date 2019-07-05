@@ -227,6 +227,30 @@ Example:
 <link href="<%= basepath('/css/style.css') %>" rel="stylesheet">
 ```
 
+### `has(key)`
+
+Returns a boolean indicating whether the current page has the specified property. This may be useful if you’re working with dynamic page properties.
+
+Example:
+
+```
+<% if (has('description')) { %>
+<p><%= description %></p>
+<% } %>
+```
+
+### `get(key, defaultValue)`
+
+Returns the specified property (or the specified default value if it does not exist) for the current page. This may be useful if you’re working with dynamic page properties.
+
+Example:
+
+```
+<% ['title', 'description'].forEach((prop) => { %>
+<p><%= get(prop, 'Something') %></p>
+<% }) %>
+```
+
 ### `findPageByUrl(url, context)`
 
 Searches the page tree (starting at `context`, which equals the `genesis` page by default) recursively for the the page that has the URL `url`. This may be useful if you need to use properties of other pages located somewhere else in the page tree.
