@@ -2,7 +2,9 @@ docs
 tests
 coverage
 .editorconfig
-.eslintrc
+.eslintrc.yaml
 .gitignore
 .npmignore
 .travis.yml
+jest.config.js
+.DS_Store
