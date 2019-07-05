@@ -517,6 +517,9 @@ Example:
 
 ## Changelog
 
+- 1.7.1
+  - Collect test coverage
+  - Fix npm ignore list
 - 1.7.0
   - Implement tests
   - Implement new page methods `has` and `get`
