@@ -509,10 +509,17 @@ Example:
 
 ## TODO / Roadmap
 
-`cms` is quite stable now. Most changes are new features, minor bug fixes, or performance improvements. And tests, of course.
+`cms` is quite stable now. Most changes are new features, minor bug fixes, or performance improvements. Currently I’m tinkering with the following features.
+
+- Support for middlewares (i.e. to inject virtual pages)
+- Support for incremental builds (i.e. to speed up builds)
 
 ## Changelog
 
+- 1.7.0
+  - Implement tests
+  - Implement new page methods `has` and `get`
+  - Update dependencies
 - 1.6.0
   - Move programmatic rendering to `render` method and add `get`/`config` methods to allow headless use
   - Enforce proper errors for promise rejections
@@ -553,7 +560,7 @@ Special thanks to [Thom Blake](http://thomblake.me/) for handing over the `cms` 
 
 ## License
 
-Copyright (c) 2017 [Thomas Rasshofer](http://thomasrasshofer.com/)  
+Copyright (c) 2019 [Thomas Rasshofer](http://thomasrasshofer.com/)  
 Licensed under the MIT license.
 
 See LICENSE for more info.
