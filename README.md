@@ -3,6 +3,7 @@
 > An elegant and easy-to-use, file-based content management system for static pages
 
 [![Build Status](https://travis-ci.org/rasshofer/cms.svg)](https://travis-ci.org/rasshofer/cms)
+[![Coverage Status](https://coveralls.io/repos/github/rasshofer/cms/badge.svg)](https://coveralls.io/github/rasshofer/cms)
 [![Dependency Status](https://david-dm.org/rasshofer/cms/status.svg)](https://david-dm.org/rasshofer/cms)
 [![Dependency Status](https://david-dm.org/rasshofer/cms/dev-status.svg)](https://david-dm.org/rasshofer/cms)
 
