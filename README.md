@@ -560,6 +560,8 @@ Example:
 
 ## Changelog
 
+- 1.8.1
+  - Ensure proper sorting of virtual pages
 - 1.8.0
   - Implement support for virtual pages
   - Update dependencies
