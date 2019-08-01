@@ -26,17 +26,17 @@
     "javascript-natural-sort": "^0.7.1",
     "leprechaun": "0.0.2",
     "lodash.camelcase": "^4.3.0",
-    "lodash.merge": "^4.6.1",
-    "lodash.template": "^4.4.0",
+    "lodash.merge": "^4.6.2",
+    "lodash.template": "^4.5.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.3",
     "shortcodes": "0.0.1"
   },
   "devDependencies": {
-    "coveralls": "^3.0.4",
+    "coveralls": "^3.0.5",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-import": "^2.18.2",
     "jest": "^24.8.0"
   },
   "scripts": {
