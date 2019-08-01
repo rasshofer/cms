@@ -556,11 +556,13 @@ Example:
 
 `cms` is quite stable now. Most changes are new features, minor bug fixes, or performance improvements. Currently I’m tinkering with the following features.
 
-- Support for middlewares (i.e. to inject virtual pages)
 - Support for incremental builds (i.e. to speed up builds)
 
 ## Changelog
 
+- 1.8.0
+  - Implement support for virtual pages
+  - Update dependencies
 - 1.7.1
   - Collect test coverage
   - Fix npm ignore list
