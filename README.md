@@ -216,6 +216,50 @@ Page {
 
 `title` and `text` are exemplary custom properties taken from the content file.
 
+## Virtual pages
+
+Using virtual pages, you can combine the file-based architecture with content from any other data source like APIs or databases. Any page that doesn’t exist in the content folder is called a »virtual page«. You can add virtual pages to any existing page (even the genesis page) using the `addVirtualPage` method which accepts `properties` containing all necessarry page properties.
+
+### Properties
+
+The following properties are expected by the system and can be extended using any amount of custom properties (e.g. `title`, `text`, …).
+
+#### `index` (Default: `0`)
+
+While number prefixes in front of folder names are used for ordering/sorting pages and defining their visibility for file-based pages, you may want to define the index explicitly for virtual pages.
+
+#### `identifier` (required)
+
+While the nested folder names of its text file determine the identifier of a page (and hence its URL), you have to define the full identifier explicitly for virtual pages.
+
+#### `template` (required)
+
+While the name of its text file determines which template is used by the system for file-based pages, you have to define the template name explicitly for virtual pages.
+
+### Example
+
+```js
+const instance = cms({
+  …
+});
+const genesis = instance.get();
+const projects = genesis.findPageByUrl('/projects');
+
+const virtualProject = projects.addVirtualPage({
+  identifier: 'projects/a',
+  template: 'project',
+  title: 'This is a virtual project',
+  text: 'Lorem ipsum',
+});
+
+const somethingElse = virtualProject.addVirtualPage({
+  identifier: 'projects/a/a',
+  template: 'project',
+  title: 'This is a virtual project within another virtual project',
+  someWeirdFieldName: 'Test'
+});
+```
+
 ## Helpers
 
 ### `basepath(url)`

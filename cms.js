@@ -6,7 +6,7 @@ const mkdirp = require('mkdirp');
 const glob = require('glob');
 const shortcodes = require('shortcodes');
 const naturalSort = require('javascript-natural-sort');
-const Page = require('./lib/page');
+const FilePage = require('./lib/file-page');
 const defaults = require('./lib/defaults');
 
 const createPageDirectory = page => new Promise((resolve, reject) => {
@@ -86,19 +86,19 @@ const renderPage = (page, options) => {
 module.exports = (custom) => {
   const config = merge({}, defaults, custom);
 
-  const page = Page.generatePageFromDirectory(config.paths.content, config);
+  const genesis = FilePage.generatePageFromDirectory(config.paths.content, config);
 
   return {
-    get: () => page,
+    get: () => genesis,
     config: () => config,
     render: () => {
-      if (page === false) {
+      if (genesis === false) {
         return Promise.reject(new Error('Missing genesis page.'));
       }
 
       rimraf.sync(config.paths.output);
 
-      return renderPage(page, config);
+      return renderPage(genesis, config);
     },
   };
 };

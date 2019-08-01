@@ -14,6 +14,9 @@ const instance = cms({
       'ejs',
     ],
   },
+  shortcodes: {
+    highlight: attrs => `<span class="highlight">${attrs.highlight}</span>`,
+  },
 });
 
 const invalid = cms({
@@ -49,6 +52,7 @@ describe('Config', () => {
     result.template(tpl, {
       title: 'Title',
       text: 'Text',
+      shortcodes: input => input,
     }).then((data) => {
       expect(data).toMatchSnapshot();
     });
@@ -60,9 +64,10 @@ describe('Parsing', () => {
   const invalidResult = invalid.get();
 
   it('provides the genesis page', () => {
-    expect(result.constructor.name).toEqual('Page');
+    expect(result.constructor.name).toEqual('FilePage');
     expect(result.page).toBeUndefined();
     expect(result.genesis).toEqual(result);
+    expect(result.someWeirdFieldName).toEqual('Test');
     expect(invalidResult).toEqual(false);
   });
 
@@ -81,6 +86,8 @@ describe('Parsing', () => {
     expect(a.images.length).toEqual(2);
     expect(a.images[0].index).toEqual(1);
     expect(a.images[0].url).toEqual('/demo/a/a.gif');
+    expect(a.images[0].width).toEqual(1);
+    expect(a.images[0].height).toEqual(1);
     expect(a.images[0].title).toEqual('Spacer');
     expect(a.images[1].index).toEqual(0);
     expect(a.images[1].url).toEqual('/demo/a/b.gif');
@@ -115,6 +122,31 @@ describe('Parsing', () => {
     expect(result.get('title')).toEqual('Home');
     expect(result.get('description', 'Fallback')).toEqual('Fallback');
   });
+
+  it('allows to add virtual pages', () => {
+    const virtualPage = result.addVirtualPage({
+      identifier: 'virtual',
+      template: 'page',
+      title: 'This is a virtual page',
+      text: 'Lorem ipsum',
+    });
+
+    virtualPage.addVirtualPage({
+      identifier: 'virtual/abc',
+      template: 'page',
+      title: 'This is a virtual sub page',
+      text: 'Lorem ipsum',
+    });
+
+    const main = result.findPageByUrl('/virtual');
+    const sub = result.findPageByUrl('/virtual/abc');
+
+    expect(main).toEqual(virtualPage);
+    expect(main.title).toEqual('This is a virtual page');
+    expect(sub.title).toEqual('This is a virtual sub page');
+    expect(sub.parent).toEqual(main);
+    expect(sub.genesis).toEqual(result);
+  });
 });
 
 describe('Render', () => {
@@ -129,5 +161,21 @@ describe('Render', () => {
     expect(fs.existsSync(path.resolve(output, 'a', 'a.gif'))).toEqual(true);
     expect(fs.existsSync(path.resolve(output, 'a', 'b.gif'))).toEqual(true);
     expect(fs.existsSync(path.resolve(output, 'b', 'a', 'index.html'))).toEqual(true);
+  });
+
+  it('handles a missing genesis page', async () => {
+    await expect(invalid.render()).rejects.toThrow();
+  });
+
+  it('handles missing templates', async () => {
+    const result = instance.get();
+
+    result.addVirtualPage({
+      identifier: 'missing-template',
+      template: 'does-not-exist',
+      title: 'Test',
+    });
+
+    await expect(instance.render()).rejects.toThrow();
   });
 });
