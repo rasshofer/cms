@@ -138,6 +138,22 @@ describe('Parsing', () => {
       text: 'Lorem ipsum',
     });
 
+    virtualPage.addVirtualPage({
+      index: 2,
+      identifier: 'virtual/two',
+      template: 'page',
+      title: 'This is a virtual sub page with index 2',
+      text: 'Lorem ipsum',
+    });
+
+    virtualPage.addVirtualPage({
+      index: 1,
+      identifier: 'virtual/one',
+      template: 'page',
+      title: 'This is a virtual sub page with index 1',
+      text: 'Lorem ipsum',
+    });
+
     const main = result.findPageByUrl('/virtual');
     const sub = result.findPageByUrl('/virtual/abc');
 
@@ -146,6 +162,9 @@ describe('Parsing', () => {
     expect(sub.title).toEqual('This is a virtual sub page');
     expect(sub.parent).toEqual(main);
     expect(sub.genesis).toEqual(result);
+    expect(main.children[0].title).toEqual('This is a virtual sub page');
+    expect(main.children[1].title).toEqual('This is a virtual sub page with index 1');
+    expect(main.children[2].title).toEqual('This is a virtual sub page with index 2');
   });
 });
 
