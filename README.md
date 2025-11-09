@@ -552,14 +552,17 @@ Example:
 }
 ```
 
-## TODO / Roadmap
+## Roadmap
 
-`cms` is quite stable now. Most changes are new features, minor bug fixes, or performance improvements. Currently I’m tinkering with the following features.
+Currently I’m working on the following for v2.
 
+- Full rewrite in TypeScript
 - Support for incremental builds (i.e. to speed up builds)
 
 ## Changelog
 
+- 1.8.2
+  - Ensure proper sorting of virtual pages
 - 1.8.1
   - Ensure proper sorting of virtual pages
 - 1.8.0
@@ -612,7 +615,7 @@ Special thanks to [Thom Blake](http://thomblake.me/) for handing over the `cms` 
 
 ## License
 
-Copyright (c) 2019 [Thomas Rasshofer](http://thomasrasshofer.com/)  
+Copyright (c) 2025 [Thomas Rasshofer](http://thomasrasshofer.com/)  
 Licensed under the MIT license.
 
 See LICENSE for more info.
